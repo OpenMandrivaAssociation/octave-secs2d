@@ -3,7 +3,7 @@
 Summary:	Octave drift-diffusion simulator for 2D devices
 Name:       octave-%{pkgname}
 Version:	0.0.8
-Release:	5
+Release:	6
 Source0:	%{pkgname}-%{version}.tar.gz
 License:	GPLv2+
 Group:		Sciences/Mathematics
