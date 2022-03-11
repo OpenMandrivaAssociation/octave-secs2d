@@ -1,7 +1,7 @@
 Index: src/Makefile
 ===================================================================
---- src/Makefile	(revision 12781)
-+++ src/Makefile	(working copy)
+--- a/src/Makefile	(revision 12781)
++++ b/src/Makefile	(working copy)
 @@ -3,19 +3,21 @@
  octfiles := $(patsubst %.cc, %.oct, $(ccfiles) )
  objfiles := $(patsubst %.cc, %.o,   $(ccfiles) )
@@ -29,8 +29,8 @@ Index: src/Makefile
  clean:
 Index: src/Ucompconst.cc
 ===================================================================
---- src/Ucompconst.cc	(revision 12781)
-+++ src/Ucompconst.cc	(working copy)
+--- a/src/Ucompconst.cc	(revision 12781)
++++ b/src/Ucompconst.cc	(working copy)
 @@ -34,7 +34,7 @@
  ////////////////////////////////////////////
  
@@ -51,8 +51,8 @@ Index: src/Ucompconst.cc
                  
 Index: src/Ucomplap.cc
 ===================================================================
---- src/Ucomplap.cc	(revision 12781)
-+++ src/Ucomplap.cc	(working copy)
+--- a/src/Ucomplap.cc	(revision 12781)
++++ b/src/Ucomplap.cc	(working copy)
 @@ -34,7 +34,7 @@
  ////////////////////////////////////////////
  
@@ -73,8 +73,8 @@ Index: src/Ucomplap.cc
                  
 Index: src/Uscharfettergummel.cc
 ===================================================================
---- src/Uscharfettergummel.cc	(revision 12781)
-+++ src/Uscharfettergummel.cc	(working copy)
+--- a/src/Uscharfettergummel.cc	(revision 12781)
++++ b/src/Uscharfettergummel.cc	(working copy)
 @@ -36,7 +36,7 @@
  
  

@@ -1,18 +1,16 @@
 %define octpkg secs2d
 
-# fix debuginfo-without-sources
-%define debug_package %{nil}
-
-# Exclude .oct files from provides
-%define __provides_exclude_from ^%{octpkglibdir}/.*.oct$
-
 Summary:	A Drift-Diffusion simulator for 2d semiconductor devices with Octave
 Name:		octave-%{octpkg}
 Version:	0.0.8
 Release:	1
 Source0:	http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
-# https://savannah.gnu.org/support/download.php?file_id=33676
+# https://savannah.gnu.org/bugs/?44803
 Patch0:		%{name}-0.0.8-port-to-octave-4.2.1.patch
+# https://savannah.gnu.org/bugs/index.php?59606
+Patch1:		build-against-octave-6.patch
+# https://savannah.gnu.org/bugs/?55345
+Patch2:		do-not-strip-debugging-symbols.patch
 License:	GPLv2+
 Group:		Sciences/Mathematics
 Url:		https://octave.sourceforge.io/%{octpkg}/
@@ -29,20 +27,31 @@ A Drift-Diffusion simulator for 2d semiconductor devices with Octave.
 
 This package is part of external Octave-Forge collection.
 
-%prep
-%setup -q -c %{octpkg}-%{version}
-cp %SOURCE0 .
+%files
+%license COPYING
+#doc NEWS
+%dir %{octpkglibdir}
+%{octpkglibdir}/*
+%dir %{octpkgdir}
+%{octpkgdir}/*
 
-# Apply patch
-pushd %{octpkg}-%{version}
-%patch0 -p0
-popd
+#---------------------------------------------------------------------------
+
+%prep
+%autosetup -p1 -n %{octpkg}-%{version}
+
+# remove backup files
+find . -name \*~ -delete
 
 %build
-%octave_pkg_build #-T
+%set_build_flags
+%octave_pkg_build
 
 %install
 %octave_pkg_install
+
+%check
+%octave_pkg_check
 
 %post
 %octave_cmd pkg rebuild
@@ -52,12 +61,4 @@ popd
 
 %postun
 %octave_cmd pkg rebuild
-
-%files
-%dir %{octpkglibdir}
-%{octpkglibdir}/*
-%dir %{octpkgdir}
-%{octpkgdir}/*
-#%doc %{octpkg}-%{version}/NEWS
-%doc %{octpkg}-%{version}/COPYING
 
