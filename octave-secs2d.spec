@@ -7,7 +7,7 @@ Release:	2
 License:	GPLv2+
 Group:		Sciences/Mathematics
 Url:		https://packages.octave.org/secs2d/
-Source0:	https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+Source0:	https://downloads.sourceforge.net/octave/secs2d-%{version}.tar.gz
 # https://savannah.gnu.org/bugs/?44803
 Patch0:		%{name}-0.0.8-port-to-octave-4.2.1.patch
 # https://savannah.gnu.org/bugs/index.php?59606
