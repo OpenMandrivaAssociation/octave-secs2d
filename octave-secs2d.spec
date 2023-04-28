@@ -1,9 +1,12 @@
-%define octpkg secs2d
+%global octpkg secs2d
 
 Summary:	A Drift-Diffusion simulator for 2d semiconductor devices with Octave
-Name:		octave-%{octpkg}
+Name:		octave-secs2d
 Version:	0.0.8
-Release:	1
+Release:	2
+License:	GPLv2+
+Group:		Sciences/Mathematics
+Url:		https://packages.octave.org/secs2d/
 Source0:	https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 # https://savannah.gnu.org/bugs/?44803
 Patch0:		%{name}-0.0.8-port-to-octave-4.2.1.patch
@@ -11,13 +14,14 @@ Patch0:		%{name}-0.0.8-port-to-octave-4.2.1.patch
 Patch1:		build-against-octave-6.patch
 # https://savannah.gnu.org/bugs/?55345
 Patch2:		do-not-strip-debugging-symbols.patch
-License:	GPLv2+
-Group:		Sciences/Mathematics
-Url:		https://packages.octave.org/%{octpkg}/
 
-BuildRequires:	octave-devel >= 2.9.17
+BuildRequires:  octave-devel >= 2.9.17
+#BuildRequires:	dx
+#BuildRequires:	gmsh
 
 Requires:	octave(api) = %{octave_api}
+#Requires:	dx
+#Requires:	gmsh
 
 Requires(post): octave
 Requires(postun): octave
@@ -28,18 +32,16 @@ A Drift-Diffusion simulator for 2d semiconductor devices with Octave.
 %files
 %license COPYING
 #doc NEWS
-%dir %{octpkglibdir}
-%{octpkglibdir}/*
 %dir %{octpkgdir}
 %{octpkgdir}/*
+%dir %{octpkglibdir}
+%{octpkglibdir}/*
+#{_metainfodir}/*.metainfo.xml
 
 #---------------------------------------------------------------------------
 
 %prep
 %autosetup -p1 -n %{octpkg}-%{version}
-
-# remove backup files
-find . -name \*~ -delete
 
 %build
 %set_build_flags
