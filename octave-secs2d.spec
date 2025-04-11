@@ -3,7 +3,7 @@
 Summary:	A Drift-Diffusion simulator for 2d semiconductor devices with Octave
 Name:		octave-secs2d
 Version:	0.0.8
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		Sciences/Mathematics
 Url:		https://packages.octave.org/secs2d/
